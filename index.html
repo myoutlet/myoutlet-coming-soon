@@ -1,1 +1,73 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f3f3f3;
+            color: #333;
+        }
+        .container {
+            text-align: center;
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 0.5em;
+        }
+        p {
+            font-size: 1.2em;
+            margin-bottom: 1em;
+        }
+        .countdown {
+            font-size: 2em;
+            margin-bottom: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Coming Soon</h1>
+        <p>Our website is under construction. We'll be here soon with our new awesome site.</p>
+        <div class="countdown" id="countdown"></div>
+    </div>
+
+    <script>
+        // Set the date we're counting down to
+        var launchDate = new Date("Mar 31, 2025 12:00:00").getTime();
+
+        // Update the count down every 1 second
+        var x = setInterval(function() {
+            // Get today's date and time
+            var now = new Date().getTime();
+
+            // Find the distance between now and the launch date
+            var distance = launchDate - now;
+
+            // Time calculations for days, hours, minutes, and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the result in the element with id="countdown"
+            document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+            + minutes + "m " + seconds + "s ";
+
+            // If the count down is over, write some text
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "We have launched!";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
